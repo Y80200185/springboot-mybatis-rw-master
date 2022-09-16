@@ -44,6 +44,12 @@ public class StockService {
         return 0;
     }
 
+
+    public void test(){
+        System.out.println("测试用的方法");
+    }
+
+
 }
 
 
