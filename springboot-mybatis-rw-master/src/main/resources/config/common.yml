@@ -1,0 +1,55 @@
+logging:
+  config: classpath:logback.xml
+  path: .
+  level: debug
+server:
+  port: 9097
+  session-timeout: 60
+
+spring:
+  rabbitmq:
+    password: guest
+    username: guest
+    host: 192.168.0.130
+    port: 5672
+  redis:
+    port: 6379
+    host: 192.168.0.130
+    jedis:
+      poll:
+        max-active: 1024
+        max-wait: -1s
+        max-idle: 200
+
+mybatis:
+  mapperLocations: classpath:/com/wl/springboot/dao/*.xml
+  typeAliasesPackage: com.wl.springboot.dao
+  mapperScanPackage: com.wl.springboot.dao
+  configLocation: classpath:/mybatis-config.xml
+
+
+
+
+mysql:
+  datasource:
+    readSize: 2  #读库个数
+    type: com.alibaba.druid.pool.DruidDataSource
+    mapperLocations: classpath:/com/wl/springboot/dao/*.xml
+    configLocation: classpath:/mybatis-config.xml
+    write:
+      url: jdbc:mysql://192.168.0.130:3307/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+    read01:
+      url: jdbc:mysql://192.168.0.130:3308/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+    read02:
+      url: jdbc:mysql://192.168.0.130:3309/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver

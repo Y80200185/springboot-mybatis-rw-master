@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wl.springboot.dao.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.wl.springboot.domain.User">
+        <!--@mbg.generated-->
+<!--        <id column="id" jdbcType="INTEGER" property="id" />-->
+        <result column="id" jdbcType="VARCHAR" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+    </resultMap>
+ 
+    <select id="query"  resultType="com.wl.springboot.domain.User">
+        select id ,userName
+        from sys_user
+    </select>
+
+    <insert id="insertBatch" parameterType="list">
+        insert into sys_user (id,userName)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=VARCHAR},#{item.userName,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <select id="findById"  resultType="com.wl.springboot.domain.User">
+        select id,userName from sys_user where id=#{id}
+    </select>
+</mapper>
