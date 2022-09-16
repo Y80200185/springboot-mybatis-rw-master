@@ -47,6 +47,8 @@ public class StockService {
 
     public void test(){
         System.out.println("测试用的方法");
+        System.out.println("测试用的方法7777");
+        
     }
 
 
